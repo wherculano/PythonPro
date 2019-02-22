@@ -1,4 +1,4 @@
-'''
+"""
 Criar um classe carro que vai possuir dois atributos compostos por outros duas classes:
 1)Motor
 2)Direção
@@ -68,52 +68,49 @@ Exemplo:
 'Norte'
 
 #Testando carro
->>>carro = Carro(direcao, motor)
+>>> carro = Carro()
 >>> carro.calcular_velocidade()
 0
 >>> carro.acelerar()
->>>carro.calcular_velocidade()
+>>> carro.calcular_velocidade()
 1
 >>> carro.acelerar()
->>>carro.calcular_velocidade()
+>>> carro.calcular_velocidade()
 2
 >>> carro.frear()
->>>carro.calcular_velocidade()
+>>> carro.calcular_velocidade()
 0
->>>carro.calcular_direcao()
+>>> carro.calcular_direcao()
 'Norte'
->>>carro.girar_a_direita()
->>>carro.calcular_direcao()
+>>> carro.girar_a_direita()
+>>> carro.calcular_direcao()
 'Leste'
->>>carro.girar_a_esquerda()
->>>carro.calcular_direcao()
+>>> carro.girar_a_esquerda()
+>>> carro.calcular_direcao()
 'Norte'
->>>carro.girar_a_esquerda()
->>>carro.calcular_direcao()
+>>> carro.girar_a_esquerda()
+>>> carro.calcular_direcao()
 'Oeste'
-'''
+"""
 
 
-class Motor(object):
+class Motor:
     def __init__(self):
         self.velocidade = 0
 
     def acelerar(self):
         self.velocidade += 1
-        #return self.velocidade
 
     def frear(self):
-        if self.velocidade >=2:
+        if self.velocidade >= 2:
             self.velocidade -= 2
-            # return self.velocidade
         elif self.velocidade == 1:
             self.velocidade -= 1
-            # return self.velocidade
         else:
-            return f'Você está parado já'
+            return 'Você está parado já'
 
 
-class Direcao(object):
+class Direcao:
     NORTE = 'Norte'
     SUL = 'Sul'
     LESTE = 'Leste'
@@ -130,7 +127,7 @@ class Direcao(object):
         elif self.valor == self.SUL:
             self.valor = self.OESTE
         elif self.valor == self.OESTE:
-            self.valor == self.NORTE
+            self.valor = self.NORTE
 
     def girar_a_esquerda(self):
         if self.valor == self.NORTE:
@@ -140,24 +137,37 @@ class Direcao(object):
         elif self.valor == self.SUL:
             self.valor = self.LESTE
         elif self.valor == self.LESTE:
-            self.valor == self.NORTE
+            self.valor = self.NORTE
 
 
-class Carro(direcao, motor):
+class Carro(Direcao, Motor):
+    def __init__(self):
+        # super(Direcao).__init__()
+        # super(Motor).__init__()
+        super().__init__()
+        self.direcao = Direcao()
+        self.motor = Motor()
+
     def calcular_velocidade(self):
-        pass
+        return self.motor.velocidade
 
     def acelerar(self):
-        pass
+        return self.motor.acelerar()
 
     def frear(self):
-        pass
+        return self.motor.frear()
 
     def calcular_direcao(self):
-        pass
+        return self.direcao.valor
 
     def girar_a_direita(self):
-        pass
+        return self.direcao.girar_a_direita()
 
     def girar_a_esquerda(self):
-        pass
+        return self.direcao.girar_a_esquerda()
+
+
+if __name__ == '__main__':
+    motor = Motor()
+    direcao = Direcao()
+    carro = Carro()
