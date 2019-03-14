@@ -1,6 +1,7 @@
 # PythonPro
 Conteudo do Curso Python Pro (Python Pro Course Content)
 
+[![Build Status](https://travis-ci.org/wherculano/PythonPro.svg?branch=master)](https://travis-ci.org/wherculano/PythonPro)
 
 Para instalar as dependencias do exercicio "github_api.py"
 ```console
