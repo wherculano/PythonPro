@@ -22,5 +22,3 @@ print()
 print(count_characters('wagner'))
 print()
 print(count_characters('abacate'))
-
-

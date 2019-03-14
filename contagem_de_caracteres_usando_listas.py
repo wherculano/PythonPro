@@ -31,8 +31,7 @@ def count_characters(word):
     print(f'{previous_characters}: {count}')
 
 
-
 if __name__ == '__main__':
-    contar_caracteres('wagner')
+    count_characters('wagner')
     print()
-    contar_caracteres('banana')
+    count_characters('banana')

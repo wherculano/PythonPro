@@ -98,6 +98,7 @@ SUL = 'Sul'
 LESTE = 'Leste'
 OESTE = 'Oeste'
 
+
 class Motor:
     def __init__(self):
         self.velocidade = 0
@@ -107,7 +108,7 @@ class Motor:
 
     def frear(self):
         self.velocidade -= 2
-        self.velocidade = max(0, self.velocidade) # caso a velocidade seja < 0, o 0 sera considerado
+        self.velocidade = max(0, self.velocidade)  # caso a velocidade seja < 0, o 0 sera considerado
 
 
 class Direcao:
@@ -118,6 +119,7 @@ class Direcao:
     rodar_a_esquerda = {
         NORTE: OESTE, OESTE: SUL, SUL: LESTE, LESTE: NORTE
     }
+
     def __init__(self):
         self.valor = NORTE
 
