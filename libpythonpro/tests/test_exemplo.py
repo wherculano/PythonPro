@@ -1,2 +1,2 @@
-def teste_str():
+def test_str():
     assert 'Wagner' == 'Wagner'
