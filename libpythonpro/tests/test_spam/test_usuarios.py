@@ -1,25 +1,32 @@
+import pytest
 from PythonPro.libpythonpro.spam.db import Conexao
 from PythonPro.libpythonpro.spam.modelos import Usuario
 
 
-def test_salvar_usuario():
-    conexao = Conexao()  # gerencia a autenticacao com o BD (lgin e senha)
-    sessao = conexao.gerar_sessao()  # efetuar alteracoe no BD (CRUD)
+#  Fixtures para Setup do BD
+@pytest.fixture
+def conexao():
+    conexao_obj = Conexao()  # gerencia a autenticacao com o BD (login e senha)
+    yield conexao_obj  # retorna o valor que será injetado nos testes
+    conexao_obj.fechar()  # Tear Down
+
+
+@pytest.fixture
+def sessao(conexao):
+    sessao_obj = conexao.gerar_sessao()  # efetuar alteracoe no BD (CRUD)
+    yield sessao_obj
+    sessao_obj.roll_back()
+    sessao_obj.fechar()
+
+
+def test_salvar_usuario(sessao):
     usuario = Usuario(nome='Wagner')
     sessao.salvar(usuario)
     assert isinstance(usuario.id, int)
-    sessao.roll_back()
-    sessao.fechar()
-    conexao.fechar()
 
 
-def test_listar_usuarios():
-    conexao = Conexao()  # gerencia a autenticacao com o BD (lgin e senha)
-    sessao = conexao.gerar_sessao()  # efetuar alteracoe no BD (CRUD)
+def test_listar_usuarios(sessao):
     usuarios = [Usuario(nome='Wagner'), Usuario(nome='Danielle')]
     for usuario in usuarios:
         sessao.salvar(usuario)
     assert usuarios == sessao.listar()
-    sessao.roll_back()
-    sessao.fechar()
-    conexao.fechar()
