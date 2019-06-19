@@ -4,7 +4,8 @@
 []
 >>> t.carregada()
 False
->>> t.carregar([1, 2])
+>>> itens = [1, 2]
+>>> t.carregar(itens)
 >>> t.itens
 [1, 2]
 >>> t.carregada()
@@ -27,6 +28,9 @@ True
 False
 >>> t.sortear()
 'Não há números a serem sorteados!'
+>>> itens
+[1, 2]
+
 
 """
 from random import shuffle
@@ -37,7 +41,7 @@ class Tombola:
         self.itens = []
 
     def carregar(self, lista):
-        self.itens = lista
+        self.itens.extend(lista)
 
     def carregada(self):
         return bool(self.itens)  # mesma coisa que verificar com "if not self.itens"
