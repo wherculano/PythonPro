@@ -1,6 +1,6 @@
 from unittest.mock import Mock
 import pytest
-from libpythonpro import github_api
+from PythonPro.libpythonpro import github_api
 
 
 @pytest.fixture
