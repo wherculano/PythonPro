@@ -12,4 +12,5 @@ six>=1.10.0
 pluggy>=0.9
 atomicwrites>=1.0
 pytest==4.6.3
+pytest-mock==1.10.4
 -r requirements.txt
