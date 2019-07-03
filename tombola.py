@@ -22,7 +22,7 @@ True
 1
 >>> t.carregada()
 True
->>> t.sortear()
+>>> t()  # mesma coisa que t.sortear(). Como o metodo __call_ foi implementado isso pode ser feito
 2
 >>> t.carregada()
 False
@@ -54,3 +54,7 @@ class Tombola:
             return self.itens.pop()  # apresenta o ultimo elemento e exclui ele
         except IndexError:
             return 'Não há números a serem sorteados!'
+
+    # tornando a Tombola um "chamavel/invocável" (callable)
+    def __call__(self):
+        return self.sortear()
