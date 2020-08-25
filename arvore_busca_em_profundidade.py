@@ -25,11 +25,8 @@ class Arvore:
         yield self.valor  # retorna valor do proprio nó corrente
         if self.direita is not None:
             yield from self.direita  # faz a mesma coisa da linha acima
-
-
 """
          0
    -2          10
 -4     -1 
-
 """
