@@ -9,11 +9,13 @@ class Arvore:
         10
     """
 
+    
     def __init__(self, valor, esquerda=None, direita=None):
         self.valor = valor
         self.esquerda = esquerda
         self.direita = direita
 
+        
     # iterar por todos os nós da esquerda
     def __iter__(self):
         """Imprimir todos os nós descendentes do nó atual (do nó esquerdo)
@@ -25,8 +27,8 @@ class Arvore:
         yield self.valor  # retorna valor do proprio nó corrente
         if self.direita is not None:
             yield from self.direita  # faz a mesma coisa da linha acima
-"""
-         0
-   -2          10
--4     -1 
-"""
+
+#         0
+#   -2          10
+#-4     -1 
+#
