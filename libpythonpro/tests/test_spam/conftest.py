@@ -3,6 +3,7 @@ from PythonPro.libpythonpro.spam.db import Conexao
 # todas as fixtures criadas neste arquivo (que por padrão deve se chamar ConfTest)
 # estarão disponíveis para todos os módulos do mesmo pacote (neste caso o pacote test_spam).
 
+
 #  Fixtures para Setup do BD
 @pytest.fixture(scope='session')
 def conexao():
